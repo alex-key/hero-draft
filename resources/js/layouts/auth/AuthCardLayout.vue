@@ -1,19 +1,19 @@
 <script setup lang="ts">
-import AppLogoIcon from '@/components/AppLogoIcon.vue';
+import AppLogoIcon from '@/components/AppLogoIcon.vue'
 import {
   Card,
   CardContent,
   CardDescription,
   CardHeader,
   CardTitle,
-} from '@/components/ui/card';
-import { home } from '@/routes';
-import { Link } from '@inertiajs/vue3';
+} from '@/components/ui/card'
+import { home } from '@/routes'
+import { Link } from '@inertiajs/vue3'
 
 defineProps<{
-  title?: string;
-  description?: string;
-}>();
+  title?: string
+  description?: string
+}>()
 </script>
 
 <template>

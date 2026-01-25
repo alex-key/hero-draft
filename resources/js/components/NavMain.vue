@@ -5,16 +5,16 @@ import {
   SidebarMenu,
   SidebarMenuButton,
   SidebarMenuItem,
-} from '@/components/ui/sidebar';
-import { useCurrentUrl } from '@/composables/useCurrentUrl';
-import { type NavItem } from '@/types';
-import { Link } from '@inertiajs/vue3';
+} from '@/components/ui/sidebar'
+import { useCurrentUrl } from '@/composables/useCurrentUrl'
+import { type NavItem } from '@/types'
+import { Link } from '@inertiajs/vue3'
 
 defineProps<{
-  items: NavItem[];
-}>();
+  items: NavItem[]
+}>()
 
-const { isCurrentUrl } = useCurrentUrl();
+const { isCurrentUrl } = useCurrentUrl()
 </script>
 
 <template>
