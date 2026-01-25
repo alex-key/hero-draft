@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import { Form, Head } from '@inertiajs/vue3'
+
 import InputError from '@/components/InputError.vue'
 import TextLink from '@/components/TextLink.vue'
 import { Button } from '@/components/ui/button'
@@ -8,7 +10,6 @@ import { Spinner } from '@/components/ui/spinner'
 import AuthBase from '@/layouts/AuthLayout.vue'
 import { login } from '@/routes'
 import { store } from '@/routes/register'
-import { Form, Head } from '@inertiajs/vue3'
 </script>
 
 <template>
@@ -26,7 +27,22 @@ import { Form, Head } from '@inertiajs/vue3'
     >
       <div class="grid gap-6">
         <div class="grid gap-2">
-          <Label for="name">Name</Label>
+          <Label for="name">Username</Label>
+          <Input
+            id="username"
+            type="text"
+            required
+            autofocus
+            :tabindex="1"
+            autocomplete="username"
+            name="username"
+            placeholder="Username"
+          />
+          <InputError :message="errors.name" />
+        </div>
+
+        <div class="grid gap-2">
+          <Label for="name">Name (Optional)</Label>
           <Input
             id="name"
             type="text"
@@ -38,20 +54,6 @@ import { Form, Head } from '@inertiajs/vue3'
             placeholder="Full name"
           />
           <InputError :message="errors.name" />
-        </div>
-
-        <div class="grid gap-2">
-          <Label for="email">Email address</Label>
-          <Input
-            id="email"
-            type="email"
-            required
-            :tabindex="2"
-            autocomplete="email"
-            name="email"
-            placeholder="email@example.com"
-          />
-          <InputError :message="errors.email" />
         </div>
 
         <div class="grid gap-2">
