@@ -1,11 +1,12 @@
 <script setup lang="ts">
 import { Head } from '@inertiajs/vue3'
 import AppHeader from '@/components/AppHeader.vue'
+import GenerateHeroForm from '@/components/GenerateHeroForm.vue'
 
 </script>
 
 <template>
-  <Head title="Welcome">
+  <Head title="Home">
     <link rel="preconnect" href="https://rsms.me/" />
     <link rel="stylesheet" href="https://rsms.me/inter/inter.css" />
   </Head>
@@ -15,7 +16,13 @@ import AppHeader from '@/components/AppHeader.vue'
     <AppHeader />
     <div
       class="flex w-full items-center justify-center opacity-100 transition-opacity duration-750 lg:grow starting:opacity-0"
-    ></div>
-    <div class="hidden h-14.5 lg:block"></div>
+    >
+      <GenerateHeroForm />
+    </div>
+    <section>
+      <span>Generated HeroCards list</span>
+    </section>
+    <div class="hidden h-14.5 lg:block">
+    </div>
   </div>
 </template>
