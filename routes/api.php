@@ -10,3 +10,5 @@ Route::prefix('api')->group(function () {
 
   Route::post('generate-hero', [CardController::class, 'generateHero'])->name('generate-hero');
 });
+
+Route::get('finish-hero', [CardController::class, 'finishHero'])->name('finish-hero');

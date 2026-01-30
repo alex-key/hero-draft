@@ -15,26 +15,25 @@ class HttpClient
 
     public function __construct(StabilityModel $model = StabilityModel::CORE)
     {
-        $this->httpService = new HttpService(config('stability.base_url') . $model->value);
+        $this->httpService = new HttpService(config('stability.base_url').$model->value);
 
         $this->setHeaders()->setParams();
     }
 
-
-    private function setParams(): self
+    private function setParams(): void
     {
         $this->params = [
             'prompt' => '',
             'aspect_ratio' => config('stability.image_aspect_ratio'),
             'output_format' => config('stability.image_output_format'),
+            'style_preset' => 'cinematic', //TODO: test other presets
         ];
-
-        return $this;
     }
 
-    private function setHeaders(): self {
+    private function setHeaders(): self
+    {
         $this->headers = [
-            'authorization' => 'Bearer ' . config('stability.api_key'),
+            'authorization' => 'Bearer '.config('stability.api_key'),
             'accept' => 'application/json',
             'stability-client-id' => config('stability.client_id'),
         ];
@@ -42,22 +41,28 @@ class HttpClient
         return $this;
     }
 
+    private function setPrompt(string $prompt)
+    {
+        $this->params['prompt'] = $prompt.$this->getDefaultPromptAppend();
+    }
+
     private function handle($jsonResponse): object
     {
         $result = ['success' => false];
 
-        if (!is_null($jsonResponse)) {
+        if (! is_null($jsonResponse)) {
             $response = json_decode($jsonResponse->getBody()->getContents(), true);
 
             $result['success'] = true;
             $result['data'] = $response;
         }
 
-        return (object)$result;
+        return (object) $result;
     }
 
-    public function textToImage(string $prompt): object {
-        $this->params['prompt'] = $prompt;
+    public function textToImage(string $prompt): object
+    {
+        $this->setPrompt($prompt);
 
         $jsonResponse = null;
         try {
@@ -69,5 +74,11 @@ class HttpClient
         return $this->handle($jsonResponse);
     }
 
-
+    private function getDefaultPromptAppend(): string
+    {
+        return ', hero shot, centered, 3/4 view or front-facing camera, medium shot framing from waist up, cinematic '.
+            'lighting, stylized digital illustration, high-end animation style, intricate textures, clean lines, '.
+            'professional character design, vibrant but sophisticated color palette, trending on ArtStation'.
+            ' --no childish, low-effort, cartoonish, distorted proportions';
+    }
 }

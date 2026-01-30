@@ -16,7 +16,7 @@ const { form: generateHeroForm } = generateHero
 </script>
 
 <template>
-  <Card class="min-w-3xl shadow-xs">
+  <Card class="w-full max-w-3xl shadow-xs">
     <CardHeader>
       <CardTitle> Create Hero Card </CardTitle>
       <CardDescription>
