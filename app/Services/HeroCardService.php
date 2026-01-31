@@ -4,9 +4,12 @@ namespace App\Services;
 
 use App\Models\HeroCard;
 use App\Resources\HeroStat;
+use Illuminate\Http\Request;
 
 class HeroCardService
 {
+    public const COOKIE_NAME = 'current_hero';
+
     public function createFromDraft(string $filepath, string $prompt): HeroCard
     {
         return HeroCard::create([
@@ -29,5 +32,16 @@ class HeroCardService
         }
 
         return $stats;
+    }
+
+    public function getHeroCardByUuid(Request $request): HeroCard | null
+    {
+        $heroUuid = $request->cookie(self::COOKIE_NAME);
+
+        if (!$heroUuid) {
+            return null;
+        }
+
+        return HeroCard::where('uuid', $heroUuid)->first();
     }
 }

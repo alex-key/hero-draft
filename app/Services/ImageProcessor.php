@@ -14,13 +14,14 @@ class ImageProcessor
 
     public function saveBase64ToStorage(string $base64): string
     {
-        $filename = Str::uuid() . '.webp';
+        $filename = self::$heroesFolder.DIRECTORY_SEPARATOR.Str::uuid() . '.webp';
 
         $image = ImageManager::gd()
             ->read(base64_decode($base64))
+            ->scale(576)
             ->toWebp(80);
 
-        Storage::disk('public')->put(self::$heroesFolder.DIRECTORY_SEPARATOR.$filename, (string) $image);
+        Storage::disk('public')->put($filename, (string) $image);
 
         return $filename;
     }

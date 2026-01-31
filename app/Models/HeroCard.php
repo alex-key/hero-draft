@@ -39,4 +39,9 @@ class HeroCard extends Model
             'stats' => 'array',
         ];
     }
+
+    public function isFinished(): self
+    {
+        return $this->setAttribute('is_finished', true);
+    }
 }
