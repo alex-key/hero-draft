@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use App\Resources\HeroRarity;
+use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Str;
@@ -34,6 +35,8 @@ class HeroCard extends Model
         'stats',
     ];
 
+    protected $appends = ['rarity'];
+
     protected function casts(): array
     {
         return [
@@ -44,6 +47,13 @@ class HeroCard extends Model
     public function isFinished(): self
     {
         return $this->setAttribute('is_finished', true);
+    }
+
+    protected function rarity(): Attribute
+    {
+        return Attribute::make(
+            get: fn () => $this->getRarity()->value,
+        );
     }
 
     public function getRarity(): HeroRarity

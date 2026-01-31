@@ -9,6 +9,7 @@ export interface HeroCardItem {
   stats: Record<string, number>
   points: number
   image_path: string
+  rarity: string
   prompt: string
 }
 
@@ -35,7 +36,7 @@ const skills = computed(() => {
       class="absolute inset-0 h-full w-full object-cover object-top"
     />
     <img
-      src="/img/card-elements/card-frame-common.png"
+      :src="'/img/card-elements/frame/' + card.rarity + '.webp'"
       class="absolute inset-0 h-full w-full object-cover object-top"
     />
 
@@ -43,15 +44,23 @@ const skills = computed(() => {
       class="absolute inset-0 bg-gradient-to-b from-black/60 via-transparent to-black/80"
     />
 
+    <div
+      class="absolute top-2 right-1 flex h-11 w-11 items-center justify-center rounded-full border-2 border-sky-800 bg-sky-950 shadow-lg"
+    >
+      <span class="font-cinzel text-lg font-bold text-white"
+        >{{ card.points }}</span
+      >
+    </div>
+
     <div class="absolute inset-x-0 top-0 p-4 pt-5 text-center">
-      <h3 class="text-xl font-bold text-white drop-shadow-lg">
+      <h3 class="font-cinzel text-xl font-bold text-amber-400 drop-shadow-lg">
         {{ card.name || 'Unnamed Hero' }}
       </h3>
     </div>
 
     <div
       v-if="card.stats"
-      class="main-skill text-md absolute inset-x-0 flex w-full justify-center text-center text-white/90 drop-shadow"
+      class="main-skill text-md absolute inset-x-0 flex w-full justify-center text-center font-cinzel text-white/90 drop-shadow"
     >
       <span class="capitalize">{{ mainSkill.name }}</span>
       <span class="ml-2 font-bold">{{ mainSkill.value }}</span>
@@ -63,14 +72,16 @@ const skills = computed(() => {
       <div
         v-for="(value, skill) in skills"
         :key="skill"
-        class="px-2 py-1 text-xs text-white"
+        class="px-2 py-1 font-cinzel text-xs text-white"
       >
         <span class="capitalize">{{ skill }}</span>
         <span class="ml-1 font-bold">{{ value }}</span>
       </div>
     </div>
 
-    <div class="description absolute inset-x-0 bottom-0 flex flex-col gap-2 px-4">
+    <div
+      class="description absolute inset-x-0 bottom-0 flex flex-col gap-2 px-4"
+    >
       <p
         v-if="card.description"
         class="line-clamp-3 text-center text-sm text-gray-400 drop-shadow"
