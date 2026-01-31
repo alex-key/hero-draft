@@ -18,6 +18,7 @@ Route::get('/', function (Request $request) {
     return Inertia::render('Home', [
         'canRegister' => Features::enabled(Features::registration()),
         'currentHero' => $currentHero,
+        'cards' => HeroCard::all(),
     ]);
 })->name('home');
 

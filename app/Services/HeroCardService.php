@@ -16,9 +16,20 @@ class HeroCardService
             'user_id' => auth()->id(),
             'image_path' => $filepath,
             'prompt' => $prompt,
-            'points' => random_int(10, 20),
+            'points' => $this->getRandomPoints(),
             'stats' => $this->getRandomStats(),
         ]);
+    }
+
+    public function getHeroCardByUuid(Request $request): ?HeroCard
+    {
+        $heroUuid = $request->cookie(self::COOKIE_NAME);
+
+        if (! $heroUuid) {
+            return null;
+        }
+
+        return HeroCard::where('uuid', $heroUuid)->first();
     }
 
     private function getRandomStats(): array
@@ -34,14 +45,16 @@ class HeroCardService
         return $stats;
     }
 
-    public function getHeroCardByUuid(Request $request): HeroCard | null
+    private function getRandomPoints(): int
     {
-        $heroUuid = $request->cookie(self::COOKIE_NAME);
+        $roll = random_int(1, 100);
 
-        if (!$heroUuid) {
-            return null;
-        }
-
-        return HeroCard::where('uuid', $heroUuid)->first();
+        return match (true) {
+            $roll <= 60 => random_int(10, 14), // 60% Common
+            $roll <= 90 => random_int(15, 17), // 30% Rare
+            $roll <= 96 => 18, // 6% Elite
+            $roll <= 99 => 19, // 3% Unique
+            default => 20, // 1% Legendary
+        };
     }
 }

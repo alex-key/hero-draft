@@ -18,13 +18,6 @@ class CardController extends Controller
         private HttpClient $stability
     ) {}
 
-    public function loadCards(): JsonResponse
-    {
-        // todo add logic
-
-        return response()->json([]);
-    }
-
     public function generateHero(Request $request, HeroCardService $heroCardService): JsonResponse | RedirectResponse
     {
         $validated = $request->validate([
@@ -80,7 +73,7 @@ class CardController extends Controller
 
         // Validate skill names match HeroStat enum
         foreach (array_keys($validated['stats']) as $skillName) {
-            if (! in_array($skillName, $validSkillNames)) {
+            if (!in_array($skillName, $validSkillNames)) {
                 return back()->withErrors(['stats' => "Invalid skill name: {$skillName}"]);
             }
         }
@@ -91,7 +84,7 @@ class CardController extends Controller
             return back()->withErrors(['stats' => "Total skill points must equal {$heroCard->points}"]);
         }
 
-        $heroCard->isFinished()->update([
+        $heroCard->finalize([
             'name' => $validated['name'],
             'description' => $validated['description'],
             'stats' => $validated['stats'],

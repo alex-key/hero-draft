@@ -26,7 +26,7 @@ class HttpClient
             'prompt' => '',
             'aspect_ratio' => config('stability.image_aspect_ratio'),
             'output_format' => config('stability.image_output_format'),
-            'style_preset' => 'cinematic', //TODO: test other presets
+            'style_preset' => 'digital-art', //TODO: test other presets
         ];
     }
 
@@ -76,9 +76,9 @@ class HttpClient
 
     private function getDefaultPromptAppend(): string
     {
-        return ', hero shot, centered, 3/4 view or front-facing camera, medium shot framing from waist up, cinematic '.
-            'lighting, stylized digital illustration, high-end animation style, intricate textures, clean lines, '.
-            'professional character design, vibrant but sophisticated color palette, trending on ArtStation'.
+        return ', hero shot, centered, 3/4 view or front-facing camera, medium shot framing from waist up, '.
+            'lighting, stylized digital illustration, high-end animation style, clean lines, '.
+            'professional character design, vibrant but sophisticated color palette'.
             ' --no childish, low-effort, cartoonish, distorted proportions';
     }
 }
