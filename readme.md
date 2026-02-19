@@ -14,21 +14,22 @@ A simple web application to generate superhero cards using image generation AI t
 - **Laravel 12** with **InertiaJS**
 - **Vue 3** with Composition API
 - **shadcn** components library
-- Tailwind CSS
-- AI REST APIs: Stability AI (planned to add more)
+- **Tailwind CSS**
+- AI REST APIs: **StabilityAI** (planned to add more)
+- **SQLite** database
 
 ## Installation
 
-Install PHP dependencies
+Install PHP and JavaScript dependencies
 ```bash
- composer install
+ composer run setup
 
 ```
 
-
-Install JavaScript dependencies
+Add StabilityAI API key to `.env`
 ```bash
-pnpm install
+# Stability AI API
+STABILITY_API_KEY={YOUR_API_KEY}
 
 ```
 
