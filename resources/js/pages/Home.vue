@@ -24,14 +24,16 @@ defineProps<{
 <template>
   <AppHeaderLayout>
     <div
-      class="flex w-full items-center justify-center opacity-100 transition-opacity duration-750 lg:grow starting:opacity-0 mt-10"
+      class="mt-10 flex w-full items-center justify-center opacity-100 transition-opacity duration-750 lg:grow starting:opacity-0"
     >
       <FinishHeroBanner v-if="currentHero" :hero-card="currentHero" />
       <GenerateHeroForm v-else />
     </div>
     <section class="pt-10">
-      <h2 class="text-xl text-center font-bold uppercase mb-6">Generated Hero Cards</h2>
-      <HeroCardList :cards="cards "/>
+      <h2 class="mb-6 text-center text-xl font-bold uppercase">
+        Generated Hero Cards
+      </h2>
+      <HeroCardList :cards="cards" />
     </section>
     <div class="hidden h-14.5 lg:block"></div>
   </AppHeaderLayout>

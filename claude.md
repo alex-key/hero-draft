@@ -4,7 +4,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Project Overview
 
-Hero Draft is a web application for generating superhero cards using AI image generation APIs (Leonardo, ChatGPT, Midjourney). Built with Laravel 12 + Vue 3 + TypeScript using Inertia.js for seamless SSR.
+Hero Draft is a web application for generating superhero cards using AI image generation APIs (Stability AI). Built with Laravel 12 + Vue 3 + TypeScript using Inertia.js for seamless SSR.
 
 ## Development Commands
 

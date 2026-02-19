@@ -1,11 +1,11 @@
 <script setup lang="ts">
-import { Link } from '@inertiajs/vue3'
 import AppLogoIcon from '@/components/AppLogoIcon.vue'
+import { Link } from '@inertiajs/vue3'
 </script>
 
 <template>
   <Link href="/" class="flex items-center justify-center">
     <AppLogoIcon class="size-16" />
-    <div class="font-bold text-2xl text-blue-800 w-auto ml-4">HERO DRAFT</div>
+    <div class="ml-4 w-auto text-2xl font-bold text-blue-800">HERO DRAFT</div>
   </Link>
 </template>

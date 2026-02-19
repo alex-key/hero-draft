@@ -47,9 +47,9 @@ const skills = computed(() => {
     <div
       class="absolute top-2 right-1 flex h-11 w-11 items-center justify-center rounded-full border-2 border-sky-800 bg-sky-950 shadow-lg"
     >
-      <span class="font-cinzel text-lg font-bold text-white"
-        >{{ card.points }}</span
-      >
+      <span class="font-cinzel text-lg font-bold text-white">{{
+        card.points
+      }}</span>
     </div>
 
     <div class="absolute inset-x-0 top-0 p-4 pt-5 text-center">

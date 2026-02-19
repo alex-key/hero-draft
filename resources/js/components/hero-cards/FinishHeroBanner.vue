@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import { Link } from '@inertiajs/vue3'
 import { Button } from '@/components/ui/button'
 import {
   Card,
@@ -8,6 +7,7 @@ import {
   CardHeader,
   CardTitle,
 } from '@/components/ui/card'
+import { Link } from '@inertiajs/vue3'
 
 interface HeroCard {
   id: number
@@ -46,8 +46,8 @@ defineProps<{
 
         <div class="flex-1">
           <p class="text-muted-foreground">
-            Your hero image has been generated and is ready to be completed.
-            Add a name, stats, and finish creating your unique hero card.
+            Your hero image has been generated and is ready to be completed. Add
+            a name, stats, and finish creating your unique hero card.
           </p>
         </div>
 

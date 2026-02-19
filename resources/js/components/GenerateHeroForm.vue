@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import { Form } from '@inertiajs/vue3'
 import InputError from '@/components/InputError.vue'
 import { Button } from '@/components/ui/button'
 import {
@@ -11,6 +10,7 @@ import {
 } from '@/components/ui/card'
 import { Textarea } from '@/components/ui/textarea'
 import { generateHero } from '@/routes'
+import { Form } from '@inertiajs/vue3'
 
 const { form: generateHeroForm } = generateHero
 </script>

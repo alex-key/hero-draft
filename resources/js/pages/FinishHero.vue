@@ -1,7 +1,4 @@
 <script setup lang="ts">
-import { Head, Link, router } from '@inertiajs/vue3'
-import { Minus, Plus } from 'lucide-vue-next'
-import { computed, reactive, ref } from 'vue'
 import { Badge } from '@/components/ui/badge'
 import { Button } from '@/components/ui/button'
 import {
@@ -15,6 +12,9 @@ import { Input } from '@/components/ui/input'
 import { Label } from '@/components/ui/label'
 import { Textarea } from '@/components/ui/textarea'
 import AppHeaderLayout from '@/layouts/app/AppHeaderLayout.vue'
+import { Head, Link, router } from '@inertiajs/vue3'
+import { Minus, Plus } from 'lucide-vue-next'
+import { computed, reactive, ref } from 'vue'
 
 const props = defineProps<{
   heroCard: {
@@ -118,7 +118,7 @@ const submit = () => {
   <Head title="Finish Hero" />
   <AppHeaderLayout>
     <div class="flex w-full items-center justify-center">
-      <Card class="w-full max-w-4xl shadow-xs mt-10">
+      <Card class="mt-10 w-full max-w-4xl shadow-xs">
         <CardHeader class="border-b">
           <CardTitle>Finish Hero Card</CardTitle>
         </CardHeader>
@@ -142,7 +142,9 @@ const submit = () => {
                   placeholder="Enter hero name"
                   :class="{ 'border-red-500': errors.name }"
                 />
-                <p v-if="errors.name" class="text-sm text-red-500">{{ errors.name }}</p>
+                <p v-if="errors.name" class="text-sm text-red-500">
+                  {{ errors.name }}
+                </p>
               </div>
 
               <div class="space-y-2">
@@ -154,14 +156,20 @@ const submit = () => {
                   class="min-h-32"
                   :class="{ 'border-red-500': errors.description }"
                 />
-                <p v-if="errors.description" class="text-sm text-red-500">{{ errors.description }}</p>
+                <p v-if="errors.description" class="text-sm text-red-500">
+                  {{ errors.description }}
+                </p>
               </div>
 
               <div class="space-y-4">
-                <div class="flex items-center justify-between text-sm font-medium">
+                <div
+                  class="flex items-center justify-between text-sm font-medium"
+                >
                   <span class="font">
                     Skill points
-                    <Badge class="bg-green-600 text-white ml-2">{{ heroCard.points }}</Badge>
+                    <Badge class="ml-2 bg-green-600 text-white">{{
+                      heroCard.points
+                    }}</Badge>
                   </span>
                   <span class="text-gray-500">{{ remainingPoints }} left</span>
                 </div>
@@ -183,7 +191,9 @@ const submit = () => {
                       >
                         <Minus class="h-4 w-4" />
                       </Button>
-                      <span class="w-8 text-center font-medium">{{ value }}</span>
+                      <span class="w-8 text-center font-medium">{{
+                        value
+                      }}</span>
                       <Button
                         variant="outline"
                         size="icon"
@@ -198,9 +208,12 @@ const submit = () => {
                 </div>
 
                 <p class="text-xs text-muted-foreground italic">
-                  The skill with the most points will become your hero's Main attribute.
+                  The skill with the most points will become your hero's Main
+                  attribute.
                 </p>
-                <p v-if="errors.stats" class="text-sm text-red-500">{{ errors.stats }}</p>
+                <p v-if="errors.stats" class="text-sm text-red-500">
+                  {{ errors.stats }}
+                </p>
               </div>
             </div>
           </div>
@@ -210,7 +223,12 @@ const submit = () => {
           <Button size="lg" variant="outline" as-child>
             <Link href="/">Back</Link>
           </Button>
-          <Button size="lg" class="bg-cyan-800" :disabled="processing" @click="submit">
+          <Button
+            size="lg"
+            class="bg-cyan-800"
+            :disabled="processing"
+            @click="submit"
+          >
             {{ processing ? 'Saving...' : 'Save Card' }}
           </Button>
         </CardFooter>
