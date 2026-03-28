@@ -12,3 +12,14 @@
     - opened
     branches:
     - '*'
+  actions:
+  - action: pnpm lint
+    type: BUILD
+    execute_commands:
+    - "# yarn install"
+    - corepack enable
+    - pnpm install
+    - pnpm lint
+    shell: BASH
+    docker_image_name: library/node
+    docker_image_tag: 24
