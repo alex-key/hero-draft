@@ -6,3 +6,9 @@
   resources: NANO
   events:
   - type: WEBHOOK
+  - type: PULL_REQUEST
+    events:
+    - edited
+    - opened
+    branches:
+    - '*'
