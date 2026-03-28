@@ -11,6 +11,7 @@
     - opened
     branches:
     - '*'
+  - type: PUSH
   actions:
   - action: pnpm lint
     type: BUILD
