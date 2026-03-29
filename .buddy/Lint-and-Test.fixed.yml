@@ -12,6 +12,9 @@
     branches:
     - '*'
   - type: PUSH
+    refs:
+    - :context
+    - refs/heads/*
   actions:
   - action: pnpm lint
     type: BUILD
