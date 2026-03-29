@@ -15,9 +15,14 @@ class ImageProcessor
     public function saveBase64ToStorage(string $base64): string
     {
         $filename = self::$heroesFolder.DIRECTORY_SEPARATOR.Str::uuid().'.webp';
+        $decodedData = base64_decode($base64);
+
+        if ($decodedData === false) {
+            throw new \Exception('Invalid base64 string');
+        }
 
         $image = ImageManager::gd()
-            ->read(base64_decode($base64))
+            ->read($decodedData)
             ->scale(576)
             ->toWebp(80);
 
