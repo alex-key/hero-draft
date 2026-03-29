@@ -8,13 +8,10 @@
   - type: PULL_REQUEST
     events:
     - edited
+    - synchronized
     - opened
     branches:
     - '*'
-  - type: PUSH
-    refs:
-    - :context
-    - refs/heads/*
   actions:
   - action: pnpm lint
     type: BUILD
