@@ -1,5 +1,5 @@
-- pipeline: lint-check
-  name: Lint check
+- pipeline: lint-test
+  name: Lint and Test
   refs:
   - refs/heads/main
   fail_on_prepare_env_warning: true

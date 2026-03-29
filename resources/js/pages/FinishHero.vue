@@ -1,4 +1,7 @@
 <script setup lang="ts">
+import { Head, Link, router } from '@inertiajs/vue3'
+import { Minus, Plus } from 'lucide-vue-next'
+import { computed, reactive, ref } from 'vue'
 import { Badge } from '@/components/ui/badge'
 import { Button } from '@/components/ui/button'
 import {
@@ -12,9 +15,6 @@ import { Input } from '@/components/ui/input'
 import { Label } from '@/components/ui/label'
 import { Textarea } from '@/components/ui/textarea'
 import AppHeaderLayout from '@/layouts/app/AppHeaderLayout.vue'
-import { Head, Link, router } from '@inertiajs/vue3'
-import { Minus, Plus } from 'lucide-vue-next'
-import { computed, reactive, ref } from 'vue'
 
 const props = defineProps<{
   heroCard: {

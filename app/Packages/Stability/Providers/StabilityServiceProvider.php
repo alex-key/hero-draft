@@ -10,11 +10,9 @@ class StabilityServiceProvider extends ServiceProvider
     public function register(): void
     {
         $this->app->bind(HttpClient::class, function () {
-            return new HttpClient();
+            return new HttpClient;
         });
     }
 
-    public function boot(): void
-    {
-    }
+    public function boot(): void {}
 }

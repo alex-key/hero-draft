@@ -18,7 +18,7 @@ class CardController extends Controller
         private HttpClient $stability
     ) {}
 
-    public function generateHero(Request $request, HeroCardService $heroCardService): JsonResponse | RedirectResponse
+    public function generateHero(Request $request, HeroCardService $heroCardService): JsonResponse|RedirectResponse
     {
         $validated = $request->validate([
             'prompt' => ['required', 'string', 'max:400'],
@@ -73,7 +73,7 @@ class CardController extends Controller
 
         // Validate skill names match HeroStat enum
         foreach (array_keys($validated['stats']) as $skillName) {
-            if (!in_array($skillName, $validSkillNames)) {
+            if (! in_array($skillName, $validSkillNames)) {
                 return back()->withErrors(['stats' => "Invalid skill name: {$skillName}"]);
             }
         }

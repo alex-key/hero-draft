@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { ChevronDown } from 'lucide-vue-next'
 import type { HeroCardItem } from '@/components/hero-cards/HeroCard.vue'
 import HeroCard from '@/components/hero-cards/HeroCard.vue'
 import { Card } from '@/components/ui/card'
@@ -7,7 +8,6 @@ import {
   CollapsibleContent,
   CollapsibleTrigger,
 } from '@/components/ui/collapsible'
-import { ChevronDown } from 'lucide-vue-next'
 
 defineProps<{
   cards: HeroCardItem[]

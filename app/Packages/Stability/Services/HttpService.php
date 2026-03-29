@@ -15,7 +15,7 @@ class HttpService
         $this->httpClient = new Client(['base_uri' => $baseUrl]);
     }
 
-    public function sendRequest(array $headers, array $payload = null): ResponseInterface
+    public function sendRequest(array $headers, ?array $payload = null): ResponseInterface
     {
         $body = [];
         foreach ($payload as $key => $value) {
