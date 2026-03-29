@@ -8,10 +8,10 @@
   - type: PULL_REQUEST
     events:
     - edited
+    - synchronized
     - opened
     branches:
     - '*'
-  - type: PUSH
   actions:
   - action: pnpm lint
     type: BUILD
@@ -26,6 +26,7 @@
   - action: composer lint
     type: BUILD
     execute_commands:
+    - composer install
     - composer lint
     setup_commands:
     - echo "memory_limit=-1" >> /usr/local/etc/php/conf.d/buddy.ini
@@ -55,6 +56,7 @@
   - action: composer test
     type: BUILD
     execute_commands:
+    - composer install
     - composer test
     setup_commands:
     - echo "memory_limit=-1" >> /usr/local/etc/php/conf.d/buddy.ini
