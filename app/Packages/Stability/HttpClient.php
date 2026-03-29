@@ -26,7 +26,7 @@ class HttpClient
             'prompt' => '',
             'aspect_ratio' => config('stability.image_aspect_ratio'),
             'output_format' => config('stability.image_output_format'),
-            'style_preset' => 'digital-art', //TODO: test other presets
+            'style_preset' => 'digital-art', // TODO: test other presets
         ];
     }
 
