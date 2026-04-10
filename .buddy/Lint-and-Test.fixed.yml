@@ -7,11 +7,12 @@
   events:
   - type: PULL_REQUEST
     events:
-    - edited
     - synchronized
+    - edited
     - opened
     branches:
     - '*'
+  - type: WEBHOOK
   actions:
   - action: pnpm lint
     type: BUILD
